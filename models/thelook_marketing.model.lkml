@@ -25,14 +25,16 @@ access_grant: pii_data {
 
 persist_with: marketing_daily_datagroup
 
-# 3. Refined Hub Explores with Marketing Branding
+# 3. Refined Hub Explores with Marketing Branding (Unhidden for Marketing)
 explore: +order_items {
+  hidden: no
   label: "Marketing: Campaign Attribution & Orders"
   description: "Marketing-specific order analysis with channel attribution"
   group_label: "Marketing Spoke"
 }
 
 explore: +users {
+  hidden: no
   label: "Marketing: Customer Acquisition & Audiences"
   description: "User demographic and marketing traffic channel analysis"
   group_label: "Marketing Spoke"
