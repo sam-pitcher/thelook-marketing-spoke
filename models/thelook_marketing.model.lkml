@@ -7,6 +7,12 @@ include: "//thelook-antigravity/explores/thelook_hub.explore.lkml"
 # 2. Include Local Marketing Spoke Views & Refinements
 include: "/views/*.view.lkml"
 
+# Default datagroup required by central PDTs (user_order_facts)
+datagroup: thelook_default_datagroup {
+  sql_trigger: SELECT MAX(id) FROM `sampitcher-playground.the_look_ca.order_items_table` ;;
+  max_cache_age: "4 hours"
+}
+
 datagroup: marketing_daily_datagroup {
   sql_trigger: SELECT MAX(id) FROM `sampitcher-playground.the_look_ca.order_items_table` ;;
   max_cache_age: "2 hours"
@@ -34,8 +40,7 @@ explore: +users {
 
 # 4. Extended Custom Departmental Explore (Extends Pattern)
 explore: marketing_campaign_cohorts {
-  extends: [users]
-  from: users_ext
+  view_name: users_ext
   label: "Marketing: Cohort Performance Analysis"
   group_label: "Marketing Spoke"
 }
