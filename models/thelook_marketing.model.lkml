@@ -44,3 +44,16 @@ explore: marketing_campaign_cohorts {
   label: "Marketing: Cohort Performance Analysis"
   group_label: "Marketing Spoke"
 }
+
+# 5. Spoke-Exclusive Ingested Data Explore (Events & Web Traffic)
+explore: events {
+  label: "Marketing: Web Traffic & Event Clickstream"
+  group_label: "Marketing Spoke"
+  description: "Exclusive departmental clickstream data ingested directly into the Marketing Spoke"
+
+  join: users {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${users.id} = ${events.user_id} ;;
+  }
+}
