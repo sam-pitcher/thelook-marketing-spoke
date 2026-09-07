@@ -42,7 +42,7 @@ explore: +users {
 
 # 4. Extended Custom Departmental Explore (Extends Pattern)
 explore: marketing_campaign_cohorts {
-  view_name: users_ext
+  from: users_ext
   label: "Marketing: Cohort Performance Analysis"
   group_label: "Marketing Spoke"
 }
